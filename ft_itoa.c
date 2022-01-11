@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-long long	ft_sign(int n)
+static long long	ft_sign(int n)
 {
 	long long	n2;
 
@@ -22,12 +22,15 @@ long long	ft_sign(int n)
 	return (n2);
 }
 
-int	ft_intlen(int n)
+static int	ft_intlen(int n)
 {
 	int			len;
 	long long	nb;
 
-	len = 1;
+	if (n == 0)
+		len = 1;
+	else
+		len = 0;
 	nb = ft_sign(n);
 	while (nb != 0)
 	{
@@ -42,19 +45,16 @@ int	ft_intlen(int n)
 char	*ft_itoa(int n)
 {
 	char		*str;
+	int			len;
 	long long	n2;
 	int			i;
-	int			len;
 
-	n2 = ft_sign(n);
-	if (n2 == 0)
-		i = 0;
-	else
-		i = 2;
 	len = ft_intlen(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == 0)
 		return (NULL);
+	n2 = ft_sign(n);
+	i = 1;
 	if (n < 0)
 		str[0] = '-';
 	while (i <= len)

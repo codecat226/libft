@@ -69,6 +69,7 @@ char	**ft_split(char const *s, char c)
 	char			**tab;
 
 	i = 0;
+	j = 0;
 	k = 0;
 	if (!s)
 		return (NULL);
